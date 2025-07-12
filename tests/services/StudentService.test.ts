@@ -40,3 +40,13 @@ describe("StudentService - deleteStudent", () => {
     expect(service.getAllStudents().length).toBe(0);
   });
 });
+
+describe("StudentService - getAllStudents", () => {
+  it("Debería retornar todos los estudiantes", () => {
+    const service = new StudentService();
+    service.createStudent("Camila", "003");
+    service.createStudent("José", "004");
+    const students = service.getAllStudents();
+    expect(students.length).toBe(2);
+  });
+});
