@@ -21,3 +21,12 @@ describe("StudentService - createStudent", () => {
     }).toThrow("Nombre requerido");
   });
 });
+
+describe("StudentService - updateStudent", () => {
+  it("Debería modificar el estudiante existente", () => {
+    const service = new StudentService();
+    service.createStudent("Alicia", "001");
+    const updated = service.updateStudent("001", "Alicia");
+    expect(updated.name).toBe("Alicia");
+  });
+});
