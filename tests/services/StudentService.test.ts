@@ -30,3 +30,13 @@ describe("StudentService - updateStudent", () => {
     expect(updated.name).toBe("Alicia");
   });
 });
+
+// test delete
+describe("StudentService - deleteStudent", () => {
+  it("Debería eliminar un estudiante existente", () => {
+    const service = new StudentService();
+    service.createStudent("Manuel", "002");
+    service.deleteStudent("002");
+    expect(service.getAllStudents().length).toBe(0);
+  });
+});

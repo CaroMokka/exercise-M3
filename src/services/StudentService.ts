@@ -19,4 +19,14 @@ export class StudentService {
     student.name = newName;
     return student;
   }
+  deleteStudent(id: string): void {
+    if (!id) throw new Error("ID requerido");
+    const studentIndex = this.students.findIndex((item) => item.id === id);
+    if (studentIndex === -1) throw new Error("Estudiante no encontrado");
+    this.students.splice(studentIndex, 1);
+  }
+
+  getAllStudents(): Student[] {
+    return this.students;
+  }
 }
