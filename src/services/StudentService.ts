@@ -1,3 +1,4 @@
+import { openDb } from "../../database/connection"  
 import { Student } from "../models/Student";
 
 export class StudentService {
