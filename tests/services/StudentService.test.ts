@@ -29,15 +29,33 @@ describe("StudentService - updateStudent", () => {
     const updated = service.updateStudent("001", "Alicia");
     expect(updated.name).toBe("Alicia");
   });
+  it("Debería dar error si el estudiante no existe", () => {
+    const service = new StudentService();
+    expect(() => {
+      service.updateStudent("000", "Ghost");
+    }).toThrow("Estudiante no encontrado");
+  });
+  it("Debería validar los campos requeridos", () => {
+    const service = new StudentService();
+    service.createStudent("Alicia", "001");
+    expect(() => {
+      service.updateStudent("001", "");
+    }).toThrow("Nombre requerido");
+  });
 });
 
-// test delete
 describe("StudentService - deleteStudent", () => {
   it("Debería eliminar un estudiante existente", () => {
     const service = new StudentService();
     service.createStudent("Manuel", "002");
     service.deleteStudent("002");
     expect(service.getAllStudents().length).toBe(0);
+  });
+  it("Debería dar error si el estudiante no existe", () => {
+    const service = new StudentService();
+    expect(() => {
+      service.deleteStudent("888");
+    }).toThrow("Estudiante no encontrado");
   });
 });
 

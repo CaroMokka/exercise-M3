@@ -15,7 +15,7 @@ export class StudentService {
   updateStudent(id: string, newName: string): Student {
     if (!newName) throw new Error("Nombre requerido");
     const student = this.students.find((item) => item.id === id);
-    if (!student) throw new Error("Estudiante no existe");
+    if (!student) throw new Error("Estudiante no encontrado");
     student.name = newName;
     return student;
   }
